@@ -5,6 +5,7 @@ module.exports = {
     index,
     create,
     show,
+    delete: destroy,
 }
 
 function newThing(req, res) {
@@ -37,6 +38,17 @@ async function show(req, res) {
         res.render('things/show', {
             thing
         })
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
+async function destroy(req, res) {
+    try {
+        const thingToDelete = await Thing.findById(req.params.id)
+        await Thing.deleteOne(thingToDelete)
+        res.redirect('/things')
     }
     catch(err) {
         console.log(err)

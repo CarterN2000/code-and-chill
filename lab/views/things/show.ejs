@@ -4,5 +4,10 @@
 <h3>When You Added This Thing:</h3><%= thing.created %> <br>
 <h3>How you feel about this thing:</h3> <%= thing.likeness %>/5 <br>
 
+<!-- <a href="things/<%= thing._id %>/edit"></a> -->
+
+<form action="/things/<%= thing._id %>?_method=DELETE" method="POST">
+    <br><button>Delete Thing</button>
+</form>
 
 <%- include('../partials/footer') %>
