@@ -4,6 +4,7 @@ module.exports = {
     new: newThing,
     index,
     create,
+    show,
 }
 
 function newThing(req, res) {
@@ -26,6 +27,18 @@ function create(req, res) {
         res.redirect('/things')
     }
     catch (err) {
+        console.log(err)
+    }
+}
+
+async function show(req, res) {
+    try {
+        const thing = await Thing.findById(req.params.id)
+        res.render('things/show', {
+            thing
+        })
+    }
+    catch(err) {
         console.log(err)
     }
 }
