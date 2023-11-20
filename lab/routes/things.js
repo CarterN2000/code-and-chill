@@ -8,4 +8,6 @@ router.get('/new', thingsCtrl.new)
 
 router.get('/', thingsCtrl.index)
 
+router.post('/', thingsCtrl.create)
+
 module.exports = router;
