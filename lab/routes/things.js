@@ -14,4 +14,8 @@ router.get('/:id', thingsCtrl.show)
 
 router.delete('/:id', thingsCtrl.delete)
 
+router.get('/:id/edit', thingsCtrl.edit)
+
+router.put('/:id', thingsCtrl.update)
+
 module.exports = router;

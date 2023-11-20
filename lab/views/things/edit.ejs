@@ -1,11 +1,11 @@
 <%- include('../partials/header') %>
 
-<h1>Make a new thing!</h1>
-<form action="/things" method="POST">
+<h1>Edit your thing!</h1>
+<form action="../../things/<%=thing._id%>?_method=PUT" method="POST">
     Thing:
-    <input type="text" placeholder="Thing" name="name"><br>
+    <input type="text" placeholder="Thing" name="name" value="<%=thing.name%>"><br>
     Today's Date:
-    <input type="date" name="created"><br>
+    <input type="date" name="created" value="<%=thing.created%>"><br>
     How much you like this thing:
     <select name="likeness">
         <option value="1">I hate this thing and whoever made it</option>
@@ -14,7 +14,8 @@
         <option value="4">I kinda like this thing not gonna lie</option>
         <option value="5">DUDE HOLY CANOLI THIS THING IS SO FUCKING COOL</option>
     </select><br>
-    <button type="submit">Add Thing</button>
+    <button type="submit">Update Thing</button>
 </form>
 
 <%- include('../partials/footer') %>
+

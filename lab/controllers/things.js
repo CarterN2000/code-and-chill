@@ -6,6 +6,8 @@ module.exports = {
     create,
     show,
     delete: destroy,
+    edit,
+    update,
 }
 
 function newThing(req, res) {
@@ -51,6 +53,24 @@ async function destroy(req, res) {
         res.redirect('/things')
     }
     catch(err) {
+        console.log(err)
+    }
+}
+
+async function edit(req, res){
+    const thingToEdit = await Thing.findById(req.params.id)
+    res.render('things/edit', {
+        thing: thingToEdit
+    })
+}
+
+async function update(req, res) {
+    try {
+        const thingToUpdate = await Thing.findById(req.params.id)
+        await Thing.updateOne(thingToUpdate, req.body)
+        res.redirect('/things')
+    }
+    catch(err){
         console.log(err)
     }
 }
